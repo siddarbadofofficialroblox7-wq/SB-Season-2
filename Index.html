@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIDD_BROZX SMP × SKSTA5 SMP | Season 2</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    background:
+        radial-gradient(circle at top left, #164e63, transparent 35%),
+        radial-gradient(circle at bottom right, #3b176d, transparent 35%),
+        #050812;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 950px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 35px 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: #102d24;
+    color: #42f59b;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: clamp(32px, 7vw, 65px);
+    line-height: 1.05;
+}
+
+h1 span {
+    background: linear-gradient(
+        90deg,
+        #35e8ff,
+        #a66cff,
+        #40ff9c
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    margin: 18px auto;
+    max-width: 650px;
+    color: #aeb9c9;
+    line-height: 1.6;
+}
+
+/* MAIN CARD */
+
+.card {
+    background: rgba(15, 23, 38, 0.9);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+
+/* SERVER INFO */
+
+.server-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.04);
+}
+
+.label {
+    color: #9ba8ba;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.value {
+    font-size: 20px;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+/* BUTTONS */
+
+button,
+.link-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: .2s;
+}
+
+button:hover,
+.link-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.copy-ip {
+    background: #39e58c;
+    color: #06100b;
+}
+
+.copy-port {
+    background: #35d9ff;
+    color: #06100b;
+}
+
+/* COMMUNITY */
+
+h2 {
+    text-align: center;
+    margin: 25px 0 15px;
+}
+
+.socials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.discord {
+    background: #5865f2;
+    color: white;
+}
+
+.youtube {
+    background: #ff2638;
+    color: white;
+}
+
+.owner {
+    background: #8a55ff;
+    color: white;
+}
+
+/* MESSAGE */
+
+#message {
+    text-align: center;
+    color: #40ff9c;
+    font-weight: bold;
+    min-height: 25px;
+    margin-top: 15px;
+}
+
+/* OUR TEAM */
+
+.team-card {
+    margin-top: 20px;
+    background: rgba(15, 23, 38, 0.9);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+.team-toggle {
+    width: 100%;
+    padding: 17px;
+    margin: 0;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(
+        135deg,
+        #7b4dff,
+        #b57cff
+    );
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-content {
+    display: none;
+    padding-top: 20px;
+}
+
+.team-content h2 {
+    margin: 22px 0 12px;
+    text-align: center;
+    color: white;
+}
+
+.members {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.member {
+    text-align: center;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    transition: .2s;
+}
+
+.member:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,.08);
+}
+
+.member-icon {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.member h3 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.owner-member {
+    border-color: #a66cff;
+}
+
+.admin-member {
+    border-color: #35d9ff;
+}
+
+.staff-member {
+    border-color: #39e58c;
+}
+
+.partner-member {
+    border-color: #ffcc4d;
+}
+
+/* USERNAME COPY BUTTON */
+
+.username-btn {
+    background: rgba(255,255,255,.08);
+    color: white;
+    border: 1px solid rgba(255,255,255,.15);
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.username-btn:hover {
+    background: rgba(255,255,255,.16);
+    transform: translateY(-2px);
+}
+
+.username-btn:active {
+    transform: scale(.96);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #68758a;
+    font-size: 12px;
+    padding: 20px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .server-info {
+        grid-template-columns: 1fr;
+    }
+
+    .socials {
+        grid-template-columns: 1fr;
+    }
+
+    .members {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="badge">
+        ⚔️ MINECRAFT SERVER • SEASON 2
+    </div>
+
+    <h1>
+        <span>SIDD_BROZX SMP</span>
+        <br>
+        × SKSTA5 SMP
+    </h1>
+
+    <p class="subtitle">
+        Welcome to Season 2! 🔥
+        <br>
+        Join the adventure, build your empire,
+        fight your enemies and survive with the community!
+    </p>
+
+</div>
+
+
+<!-- SERVER CARD -->
+
+<div class="card">
+
+    <div class="server-info">
+
+        <!-- SERVER IP -->
+
+        <div class="info">
+
+            <div class="label">
+                SERVER IP
+            </div>
+
+            <div class="value">
+                siddbrozx2.mcsh.io
+            </div>
+
+            <button
+                class="copy-ip"
+                onclick="copyText(
+                    'siddbrozx2.mcsh.io',
+                    'IP Copied!'
+                )">
+
+                📋 COPY IP
+
+            </button>
+
+        </div>
+
+
+        <!-- PORT -->
+
+        <div class="info">
+
+            <div class="label">
+                BEDROCK PORT
+            </div>
+
+            <div class="value">
+                19132
+            </div>
+
+            <button
+                class="copy-port"
+                onclick="copyText(
+                    '19132',
+                    'Port Copied!'
+                )">
+
+                📋 COPY PORT
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- COMMUNITY -->
+
+    <h2>
+        🌐 JOIN OUR COMMUNITY
+    </h2>
+
+    <div class="socials">
+
+        <a
+            class="link-btn discord"
+            href="https://discord.gg/PbwYnrSkG"
+            target="_blank"
+            rel="noopener">
+
+            💬 JOIN DISCORD
+
+        </a>
+
+
+        <a
+            class="link-btn youtube"
+            href="https://youtube.com/@sidd_brozxsmpofficial?si=p0BwBJj6bV15GkRI"
+            target="_blank"
+            rel="noopener">
+
+            ▶️ SMP YOUTUBE
+
+        </a>
+
+
+        <a
+            class="link-btn owner"
+            href="https://youtube.com/@sidd_brozx_yt_sb?si=Pfz3dKKBtBUEgZyj"
+            target="_blank"
+            rel="noopener">
+
+            👑 OWNER YOUTUBE
+
+        </a>
+
+    </div>
+
+
+    <div id="message"></div>
+
+</div>
+
+
+<!-- OUR TEAM -->
+
+<section class="team-card">
+
+    <button
+        class="team-toggle"
+        onclick="toggleTeam()">
+
+        👥 OUR TEAM
+
+        <span id="teamArrow">
+            ▼
+        </span>
+
+    </button>
+
+
+    <div
+        id="teamContent"
+        class="team-content">
+
+
+        <!-- OWNERS -->
+
+        <h2>
+            👑 OWNERS
+        </h2>
+
+        <div class="members">
+
+            <div class="member owner-member">
+
+                <div class="member-icon">
+                    👑
+                </div>
+
+                <h3>
+                    Owner 1
+                </h3>
+
+                <button
+                    class="username-btn"
+                    onclick="copyUsername('sidd_bros6789')">
+
+                    📋 sidd_bros6789
+
+                </button>
+
+            </div>
+
+
+            <div class="member owner-member">
+
+                <div class="member-icon">
+                    👑
+                </div>
+
+                <h3>
+                    Owner 2
+                </h3>
+
+                <button
+                    class="username-btn"
+                    onclick="copyUsername('milkytamilgaming')">
+
+                    📋 milkytamilgaming
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMINS -->
+
+        <h2>
+            🛡️ ADMINS
+        </h2>
+
+        <div class="members">
+
+            <div class="member admin-member">
+
+                <div class="member-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Admin 1
+                </h3>
+
+                <button
+                    class="username-btn"
+                    onclick="copyUsername('itszenoyt')">
+
+                    📋 itszenoyt
+
+                </button>
+
+            </div>
+
+
+            <div class="member admin-member">
+
+                <div class="member-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Admin 2
+                </h3>
+
+                <button
+                    class="username-btn"
+                    onclick="copyUsername('bluewhale0086')">
+
+                    📋 bluewhale0086
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STAFF -->
+
+        <h2>
+            🔨 STAFF
+        </h2>
+
+        <div class="members">
+
+            <div class="member staff-member">
+
+                <div class="member-icon">
+                    🔨
+                </div>
+
+                <h3>
+                    Staff 1
+                </h3>
+
+                <button
+                    class="username-btn"
+                    onclick="copyUsername('luci')">
+
+                    📋 luci
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PARTNER -->
+
+        <h2>
+            🤝 PARTNER
+        </h2>
+
+        <div class="members">
+
+            <div class="member partner-member">
+
+                <div class="member-icon">
+                    🤝
+                </div>
+
+                <h3>
+                    Partner 1
+                </h3>
+
+                <button
+                    class="username-btn"
+                    onclick="copyUsername('ninjanaruto1070')">
+
+                    📋 ninjanaruto1070
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 SIDD_BROZX SMP × SKSTA5 SMP
+
+    <br>
+
+    Season 2 • Minecraft Bedrock
+
+</footer>
+
+
+</div>
+
+
+<script>
+
+/* COPY IP / PORT */
+
+function copyText(text, message) {
+
+    navigator.clipboard.writeText(text)
+
+    .then(function() {
+
+        showMessage("✅ " + message);
+
+    })
+
+    .catch(function() {
+
+        fallbackCopy(text);
+
+        showMessage("✅ " + message);
+
+    });
+
+}
+
+
+/* COPY USERNAME */
+
+function copyUsername(username) {
+
+    navigator.clipboard.writeText(username)
+
+    .then(function() {
+
+        showMessage(
+            "✅ " + username + " copied!"
+        );
+
+    })
+
+    .catch(function() {
+
+        fallbackCopy(username);
+
+        showMessage(
+            "✅ " + username + " copied!"
+        );
+
+    });
+
+}
+
+
+/* FALLBACK COPY */
+
+function fallbackCopy(text) {
+
+    const textarea =
+        document.createElement("textarea");
+
+    textarea.value = text;
+
+    document.body.appendChild(textarea);
+
+    textarea.select();
+
+    document.execCommand("copy");
+
+    textarea.remove();
+
+}
+
+
+/* MESSAGE */
+
+function showMessage(message) {
+
+    const messageBox =
+        document.getElementById("message");
+
+    messageBox.innerText = message;
+
+    setTimeout(function() {
+
+        messageBox.innerText = "";
+
+    }, 2000);
+
+}
+
+
+/* OUR TEAM OPEN / CLOSE */
+
+function toggleTeam() {
+
+    const content =
+        document.getElementById("teamContent");
+
+    const arrow =
+        document.getElementById("teamArrow");
+
+
+    if (content.style.display === "block") {
+
+        content.style.display = "none";
+
+        arrow.innerText = "▼";
+
+    } else {
+
+        content.style.display = "block";
+
+        arrow.innerText = "▲";
+
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
